@@ -1,0 +1,45 @@
+{
+    "name": "adgoal-common/base",
+    "type": "library",
+    "description": "Adgoal Base common library",
+    "license": "proprietary",
+    "require": {
+        "php": "^7.2",
+        "ext-json": "*",
+        "beberlei/assert": "^3.2",
+        "psr/log": "^1.1",
+        "ramsey/uuid": "^3.8 || ^4.0",
+        "monolog/monolog": "~1.22 || ~2.0"
+    },
+    "require-dev": {
+        "jakub-onderka/php-console-highlighter": "^0.4",
+        "jakub-onderka/php-parallel-lint": "^1.0",
+        "mockery/mockery": "^1.2",
+        "phpmd/phpmd": "^2.6",
+        "phpstan/phpstan": "^0.11",
+        "phpstan/phpstan-mockery": "^0.11",
+        "phpstan/phpstan-phpunit": "^0.11",
+        "phpunit/phpunit": "^8.0",
+        "roave/security-advisories": "dev-master",
+        "sensiolabs-de/deptrac-shim": "^0.4",
+        "symfony/phpunit-bridge": "*",
+        "symplify/easy-coding-standard": "^5.4",
+        "vimeo/psalm": "^3.0"
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "AdgoalCommon\\Base\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AdgoalCommon\\Base\\Tests\\Unit\\": "tests/unit"
+        }
+    }
+}
