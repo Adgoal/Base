@@ -23,7 +23,7 @@
         "roave/security-advisories": "dev-master",
         "sensiolabs-de/deptrac-shim": "^0.4",
         "symfony/phpunit-bridge": "*",
-        "symplify/easy-coding-standard": "^5.4",
+        "symplify/easy-coding-standard": "^5.4 || ^9.0",
         "vimeo/psalm": "^3.0"
     },
     "config": {
