@@ -60,11 +60,15 @@ trait LoggerTrait
      * @param int     $level
      * @param mixed[] $context
      *
+     * @SuppressWarnings(PHPMD.ErrorControlOperator)
+     *
      * @return $this
      */
     public function logMessage(string $message, int $level, array $context = []): self
     {
         if (!$this->logger instanceof LoggerInterface) {
+            @trigger_error('Logger not set for class:'.get_class($this), E_USER_WARNING);
+
             return $this;
         }
 
@@ -105,11 +109,15 @@ trait LoggerTrait
      * @param int       $level
      * @param string    $message   The error message to log
      *
+     * @SuppressWarnings(PHPMD.ErrorControlOperator)
+     *
      * @return $this
      */
     public function logException(Throwable $exception, int $level, string $message): self
     {
         if (!$this->logger instanceof LoggerInterface) {
+            @trigger_error('Logger not set for class:'.get_class($this), E_USER_WARNING);
+
             return $this;
         }
 
