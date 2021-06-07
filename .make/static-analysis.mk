@@ -22,12 +22,6 @@ coding-standards: ## run check and validate code standards tests
 coding-standards-fixer: ## run code standards fixer
 	docker-compose run --rm --no-deps php sh -lc './vendor/bin/ecs check src tests --fix'
 
-tests-unit: ## Run unit-tests suite
-	docker-compose run --rm --no-deps php sh -lc 'vendor/bin/phpunit --configuration /app/phpunit.xml.dist'
-
-tests-integration: ## Run integration-tests suite
-	docker-compose run --rm --no-deps php sh -lc 'vendor/bin/phpunit --configuration /app/phpunit.func.xml'
-
 .PHONY: infection
 infection: ## executes mutation framework infection
 	docker-compose run --rm --no-deps php-fpm sh -lc './vendor/bin/infection --min-msi=70 --min-covered-msi=80 --threads=$(JOBS) --coverage=var/report'
