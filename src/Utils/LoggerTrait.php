@@ -95,7 +95,6 @@ trait LoggerTrait
 
             default:
                 throw new LoggerException(sprintf("Try to log invalid message level type '%s'", $level));
-
                 break;
         }
 
@@ -148,7 +147,6 @@ trait LoggerTrait
 
             default:
                 throw new LoggerException(sprintf("Try to log invalid error level type '%s'", $level));
-
                 break;
         }
 

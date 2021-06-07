@@ -14,6 +14,9 @@ use Throwable;
 trait ParentExceptionTrait
 {
     /**
+     *
+     * Parent Exception.
+     *
      * @var Throwable
      */
     protected $parentException;

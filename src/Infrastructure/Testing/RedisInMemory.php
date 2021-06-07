@@ -34,6 +34,8 @@ class RedisInMemory extends Redis
      */
     public function connect($host, $port = 6379, $timeout = 0.0, $reserved = null, $retryInterval = 0, $readTimeout = 0.0)
     {
+        unset($host, $port, $timeout, $reserved, $retryInterval, $readTimeout);
+
         return  true;
     }
 
@@ -64,6 +66,7 @@ class RedisInMemory extends Redis
      */
     public function set($key, $value, $timeout = 0): bool
     {
+        unset($timeout);
         $this->storage[$key] = $value;
 
         return true;
