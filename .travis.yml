@@ -1,5 +1,4 @@
-dist: xenial
-sudo: true
+dist: focal
 
 cache:
   directories:
@@ -12,6 +11,8 @@ before_cache:
   - docker save -o docker_images/images.tar $(docker images -a -q)
 
 install:
+  - sudo curl -L https://github.com/docker/compose/releases/download/1.27.4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+  - sudo chmod +x /usr/local/bin/docker-compose
   - export DOCKER_UID=`id -u`
   - export DOCKER_GID=`id -g`
   - export DOCKER_IMAGE_VERSION=`echo $TRAVIS_BRANCH | tr "[:upper:]" "[:lower:]" | sed "s/[^a-zA-Z0-9-]/-/g" | sed "s/-$//g" | tr -d '\n' | tr -d '\r'`
@@ -26,5 +27,7 @@ script:
   - git log $(git describe --abbrev=0 --tags)...HEAD --no-merges --pretty=format:"* [%h](http://github.com/${TRAVIS_REPO_SLUG}/commit/%H) %s (%cN)"
 
 after_success:
-  - wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.2.0/php-coveralls.phar
-  - travis_retry php php-coveralls.phar -v --config .coveralls.yml -v;
+  - cat .env > .env.travis
+  - set | grep "TRAVIS" >> .env.travis
+  - set | grep "DOCKER" >> .env.travis
+  - eval "docker-compose --env-file .env.travis run --rm php sh -lc 'php ./vendor/bin/php-coveralls -v --config .coveralls.yml'"
