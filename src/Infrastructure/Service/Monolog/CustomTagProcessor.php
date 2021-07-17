@@ -74,7 +74,7 @@ class CustomTagProcessor implements ProcessorInterface
      *
      * @param mixed[] $record
      *
-     * @return mixed[]
+     * @return array{channel: string, context: array<array-key, mixed>, datetime: \DateTimeImmutable, extra: array<array-key, mixed>, level: 100|200|250|300|400|500|550|600, level_name: "ALERT"|"CRITICAL"|"DEBUG"|"EMERGENCY"|"ERROR"|"INFO"|"NOTICE"|"WARNING", message: string}
      */
     public function __invoke(array $record): array
     {
